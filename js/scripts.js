@@ -6,6 +6,9 @@ let pokemonList = [
   //   { name: "Pikachu2", height: 22, types: ["electric", "ice"] },
 ];
 
+// for loop to add pockemon names in the grids 
+// determine which pokemon is big
+
 for (let i = 0; i < pokemonList.length; i++) {
   let pokemonDisplay = document.querySelector(`#pokemon-${i}`);
   pokemonDisplay.innerHTML = pokemonList[i].name;
