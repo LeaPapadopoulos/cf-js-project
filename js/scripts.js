@@ -6,18 +6,29 @@ let pokemonList = [
   //   { name: "Pikachu2", height: 22, types: ["electric", "ice"] },
 ];
 
-// for loop to add pockemon names in the grids 
+// for loop to add pockemon names in the grids
 // determine which pokemon is big
 
-for (let i = 0; i < pokemonList.length; i++) {
+// for (let i = 0; i < pokemonList.length; i++) {
+//   let pokemonDisplay = document.querySelector(`#pokemon-${i}`);
+//   pokemonDisplay.innerHTML = pokemonList[i].name;
+//   if (pokemonList[i].height < 10 && pokemonList[i].height >= 7) {
+//     pokemonDisplay.innerHTML = pokemonList[i].name + " Wow, that’s big!";
+//   } else {
+//     pokemonDisplay.innerHTML = pokemonList[i].name;
+//   }
+// }
+
+pokemonList.forEach(function (user, i = 0) {
   let pokemonDisplay = document.querySelector(`#pokemon-${i}`);
-  pokemonDisplay.innerHTML = pokemonList[i].name;
-  if (pokemonList[i].height < 10 && pokemonList[i].height >= 7) {
-    pokemonDisplay.innerHTML = pokemonList[i].name + " Wow, that’s big!";
+  pokemonDisplay.innerHTML = pokemonList.name;
+  if (user.height < 10 && user.height >= 7) {
+    pokemonDisplay.innerHTML = user.name + " Wow, that’s big!";
   } else {
-    pokemonDisplay.innerHTML = pokemonList[i].name ;
+    pokemonDisplay.innerHTML = user.name;
   }
-}
+  i++;
+});
 
 // {
 //   if (pokemonList[i].height < 10 && pokemonList[i].height >= 7) {
