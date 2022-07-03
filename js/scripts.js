@@ -1,11 +1,27 @@
-let pokemonList = [
-  { name: "Bulbasaur", height: 7, types: ["grass", "poison"] },
-  { name: "Butterfree", height: 3, types: ["bug", "flying"] },
-  { name: "Pikachu", height: 1, types: ["electric", "ice"] },
+let pokemonRepository = (function () {
+  let pokemonList = [
+    { name: "Bulbasaur", height: 7, types: ["grass", "poison"] },
+    { name: "Butterfree", height: 3, types: ["bug", "flying"] },
+    { name: "Pikachu", height: 1, types: ["electric", "ice"] },
 
-  //   { name: "Pikachu2", height: 22, types: ["electric", "ice"] },
-];
+    //   { name: "Pikachu2", height: 22, types: ["electric", "ice"] },
+  ];
+  function add(pokemon) {
+    pokemonList.push(pokemon);
+    return pokemonList;
+  }
 
+  function getAll() {
+    return pokemonList;
+  }
+
+  return {
+    add: add,
+    getAll: getAll,
+  };
+})();
+let newPokemon = { name: "Pikachu2", height: 22, types: ["electric", "ice"] };
+console.log(pokemonRepository.getAll());
 // for loop to add pockemon names in the grids
 // determine which pokemon is big
 
@@ -18,6 +34,8 @@ let pokemonList = [
 //     pokemonDisplay.innerHTML = pokemonList[i].name;
 //   }
 // }
+
+let pokemonList = pokemonRepository.getAll();
 
 pokemonList.forEach(function (user, i = 0) {
   let pokemonDisplay = document.querySelector(`#pokemon-${i}`);
