@@ -6,54 +6,58 @@ let pokemonRepository = (function () {
 
     //   { name: "Pikachu2", height: 22, types: ["electric", "ice"] },
   ];
+
   function add(pokemon) {
-    pokemonList.push(pokemon);
-    return pokemonList;
+    if (
+      typeof pokemon === "object" &&
+      "name" in pokemon &&
+      "height" in pokemon &&
+      "types" in pokemon
+    ) {
+      pokemonList.push(pokemon);
+    } else {
+      console.log("pokemon is not correct");
+    }
   }
 
   function getAll() {
     return pokemonList;
   }
 
+  // let newPokemon = { name: "Pikachu2", height: 22, types: ["electric", "ice"] };
+  // console.log(pokemonRepository.getAll());
+
+  function addListItem(pokemon) {
+    let ulPokemon = document.querySelector(".pokemon-list");
+    let listPokemon = document.createElement("li");
+    let button = document.createElement("button");
+    button.innerText = pokemon.name;
+    button.classList.add("btn");
+    button.classList.add("btn-info");
+    listPokemon.classList.add("list-group-item");
+    listPokemon.appendChild(button);
+    ulPokemon.appendChild(listPokemon);
+    button.addEventListener("click", function () {
+      //   console.log(pokemon);
+      showDetails(pokemon);
+    });
+  }
+
+  function showDetails(pokemon) {
+    console.log(pokemon);
+  }
+
   return {
     add: add,
     getAll: getAll,
+    addListItem: addListItem,
   };
 })();
-let newPokemon = { name: "Pikachu2", height: 22, types: ["electric", "ice"] };
-console.log(pokemonRepository.getAll());
-// for loop to add pockemon names in the grids
-// determine which pokemon is big
 
-// for (let i = 0; i < pokemonList.length; i++) {
-//   let pokemonDisplay = document.querySelector(`#pokemon-${i}`);
-//   pokemonDisplay.innerHTML = pokemonList[i].name;
-//   if (pokemonList[i].height < 10 && pokemonList[i].height >= 7) {
-//     pokemonDisplay.innerHTML = pokemonList[i].name + " Wow, that’s big!";
-//   } else {
-//     pokemonDisplay.innerHTML = pokemonList[i].name;
-//   }
-// }
-
-let pokemonList = pokemonRepository.getAll();
-
-pokemonList.forEach(function (user, i = 0) {
-  let pokemonDisplay = document.querySelector(`#pokemon-${i}`);
-  pokemonDisplay.innerHTML = pokemonList.name;
-  if (user.height < 10 && user.height >= 7) {
-    pokemonDisplay.innerHTML = user.name + " Wow, that’s big!";
-  } else {
-    pokemonDisplay.innerHTML = user.name;
-  }
-  i++;
+pokemonRepository.getAll().forEach(function (pokemon) {
+  pokemonRepository.addListItem(pokemon);
 });
 
-// {
-//   if (pokemonList[i].height < 10 && pokemonList[i].height >= 7) {
-//     console.log(pokemonList[i].name + " is a big pokemon");
-//   } else if (pokemonList[i].height > 1 && pokemonList[i].height < 7) {
-//     console.log(pokemonList[i].name + " is a small pokemon");
-//   } else {
-//     console.log(pokemonList[i].name + " is a pokemon");
-//   }
-// }
+// pokemonList.add({ name: "Pikachu", height: 0.3, types: ["electric"] });
+
+// console.log(pokemonList.getAll());
