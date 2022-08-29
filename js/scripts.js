@@ -27,6 +27,8 @@ let pokemonRepository = (function () {
     button.innerText = pokemon.name;
     button.classList.add("btn");
     button.classList.add("btn-primary");
+    button.setAttribute("data-bs-toggle", "modal");
+    button.setAttribute("data-bs-target", "#pokemonModal");
     listPokemon.classList.add("list-group-item");
     listPokemon.appendChild(button);
     ulPokemon.appendChild(listPokemon);
@@ -54,11 +56,11 @@ let pokemonRepository = (function () {
       });
   }
 
-  //   function showDetails(pokemon) {
-  //   loadDetails(pokemon).then(function () {
-  //     console.log(pokemon);
-  //   });
-  // }
+  function showDetails(pokemon) {
+    loadDetails(pokemon).then(function () {
+      console.log(pokemon);
+    });
+  }
 
   function loadDetails(item) {
     let url = item.detailsUrl;
@@ -77,7 +79,12 @@ let pokemonRepository = (function () {
   }
   function showDetails(item) {
     pokemonRepository.loadDetails(item).then(function () {
-      console.log(item);
+      let modalName = document.querySelector("#pokemonName");
+      let modalHeight = document.querySelector("#pokemonHeight");
+      let modalImage = document.querySelector("#pokemonImage");
+      modalName.innerText = item.name;
+      modalHeight.innerText = item.height;
+      modalImage.src = item.imageUrl;
     });
   }
   return {
