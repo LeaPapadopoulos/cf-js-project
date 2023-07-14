@@ -4,7 +4,11 @@ This is a simple JavaScript app for displaying a list of Pokémon.
 
 ## Demo
 
-You can see a live demo of the app [here](link_to_demo).
+You can see a live demo of the app [here](https://leapapadopoulos.github.io/cf-js-project/).
+
+## Screenshots
+![Alt text](demo-screen1.png)
+![Alt text](demo-screen2.png)
 
 ## Features
 
